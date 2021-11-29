@@ -15,21 +15,21 @@ import java.io.BufferedReader;
 public class Challenge {
       public static String readFile()	  		 	  	 	        	     	
   {	  		 	  	 	        	     	
-    String fileToRead="Tasks.csv";
-    String output="";
+    String fileInput="Tasks.csv";
+    String textOutput="";
     try {	  		 	  	 	        	     	
-      FileReader readTheFile = new FileReader(fileToRead);	  		 	  	 	        	     	
-      BufferedReader betterReadTheFile = new BufferedReader(readTheFile);	  		 	  	 	        	     	
-      while (betterReadTheFile.ready()) {	  		 	  	 	        	     	
-        String line = betterReadTheFile.readLine();
-        output = output + line + System.lineSeparator();
+      FileReader fReader = new FileReader(fileInput);	  		 	  	 	        	     	
+      BufferedReader bReader = new BufferedReader(fReader);	  		 	  	 	        	     	
+      while (bReader.ready()) {	  		 	  	 	        	     	
+        String line = bReader.readLine();
+        textOutput = textOutput + line + System.lineSeparator();
       }	  		 	  	 	        	     	
     }	  		 	  	 	        	     	
       catch (Exception e) {	  		 	  	 	        	     	
-  		 	  	 	        	     	
+  	return "Error - Task Aborted";	 	  	 	        	     	
       }	  		 	  	 	        	     	
 	  		 	  	 	        	     	
         //ioexception //filenotfoundexception	  
-        return output;
+        return textOutput;
   }
 }
