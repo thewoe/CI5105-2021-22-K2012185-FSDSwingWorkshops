@@ -13,23 +13,20 @@ import java.io.BufferedReader;
  * @author dave
  */
 public class Challenge {
-      public static String readFile()	  		 	  	 	        	     	
-  {	  		 	  	 	        	     	
-    String fileInput="Tasks.csv";
-    String textOutput="";
-    try {	  		 	  	 	        	     	
-      FileReader fReader = new FileReader(fileInput);	  		 	  	 	        	     	
-      BufferedReader bReader = new BufferedReader(fReader);	  		 	  	 	        	     	
-      while (bReader.ready()) {	  		 	  	 	        	     	
-        String line = bReader.readLine();
-        textOutput = textOutput + line + System.lineSeparator();
-      }	  		 	  	 	        	     	
-    }	  		 	  	 	        	     	
-      catch (Exception e) {	  		 	  	 	        	     	
-  	return "Error - Task Aborted";	 	  	 	        	     	
-      }	  		 	  	 	        	     	
-	  		 	  	 	        	     	
-        //ioexception //filenotfoundexception	  
+    public static String readFile() {	  		 	  	 	        	     	
+        String fileInput="Tasks.csv";
+        String textOutput="";
+        try {	  		 	  	 	        	     	
+            FileReader fReader = new FileReader(fileInput);	  		 	  	 	        	     	
+            BufferedReader bReader = new BufferedReader(fReader);	  		 	  	 	        	     	
+            while (bReader.ready()) {	  		 	  	 	        	     	
+                String line = bReader.readLine();
+                textOutput = textOutput + line + System.lineSeparator();
+            }	  		 	  	 	        	     	
+        }	  		 	  	 	        	     	
+        catch (Exception e) {	  		 	  	 	        	     	
+            return "Error - Task Aborted";	 	  	 	        	     	
+        }	  		 	  	 	        	     		  
         return textOutput;
   }
 }
