@@ -5,6 +5,8 @@
  */
 package ku.pii2020.swingworkshops.model;
 
+import ku.pii2020.swingworkshops.view.DataViewer;
+
 /**
  *
  * @author dave
@@ -16,8 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println(Challenge.readFile());
-        //test
+        //System.out.println(Challenge.readFile());
+        Challenge.displayFile();
     }
     
 }

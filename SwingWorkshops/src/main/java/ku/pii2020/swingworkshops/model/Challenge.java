@@ -7,12 +7,15 @@ package ku.pii2020.swingworkshops.model;
 
 import java.io.FileReader;	  		 	  	 	        	     	
 import java.io.BufferedReader;
+import ku.pii2020.swingworkshops.view.DataViewer;
+import javax.swing.*;
 
 /**
  *
  * @author dave
  */
 public class Challenge {
+    public static DataViewer dataViewer = new DataViewer();
     public static String readFile() {	  		 	  	 	        	     	
         String fileInput="Tasks.csv";
         String textOutput="";
@@ -29,4 +32,7 @@ public class Challenge {
         }	  		 	  	 	        	     		  
         return textOutput;
   }
+    public static void displayFile() {
+        dataViewer.addText(Challenge.readFile());
+    }
 }
