@@ -16,12 +16,9 @@ import javax.swing.*;
  */
 public class Challenge {
     public static DataViewer dataViewer = new DataViewer();
-    public static String readFile() {	  		 	  	 	        	     	
-        String fileInput="Tasks.csv";
+    public static String readFile(String fileInput) {	  		 	  	 	        	     	
         String textOutput="";
-        try {	  		 	  	 	        	     	
-            FileReader fReader = new FileReader(fileInput);	  		 	  	 	        	     	
-            BufferedReader bReader = new BufferedReader(fReader);	  		 	  	 	        	     	
+        try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {	  		 	  	 	        	     		  		 	  	 	        	     	
             while (bReader.ready()) {	  		 	  	 	        	     	
                 String line = bReader.readLine();
                 textOutput = textOutput + line + System.lineSeparator();
@@ -32,7 +29,7 @@ public class Challenge {
         }	  		 	  	 	        	     		  
         return textOutput;
   }
-    public static void displayFile() {
-        dataViewer.addText(Challenge.readFile());
+    public static void displayFile(String fileInput) {
+        dataViewer.addText(Challenge.readFile(fileInput));
     }
 }
