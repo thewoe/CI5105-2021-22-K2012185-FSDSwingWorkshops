@@ -8,14 +8,25 @@ package ku.pii2020.swingworkshops.model;
 import java.io.FileReader;	  		 	  	 	        	     	
 import java.io.BufferedReader;
 import ku.pii2020.swingworkshops.view.DataViewer;
-import javax.swing.*;
 
 /**
  *
  * @author dave
  */
 public class Challenge {
-    public static DataViewer dataViewer = new DataViewer();
+    // Attribute declarations
+    private static DataViewer dataViewer = new DataViewer();
+    
+    // Attribute Getter and Setter Methods
+    public static DataViewer getDataViewer() {
+        return dataViewer;
+    }
+
+    public static void setDataViewer(DataViewer dataViewer) {
+        Challenge.dataViewer = dataViewer;
+    }
+    
+    // Class Methods
     public static String readFile(String fileInput) {	  		 	  	 	        	     	
         String textOutput="";
         try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {	  		 	  	 	        	     		  		 	  	 	        	     	
@@ -30,6 +41,6 @@ public class Challenge {
         return textOutput;
   }
     public static void displayFile(String fileInput) {
-        dataViewer.addText(Challenge.readFile(fileInput));
+        Challenge.getDataViewer().addText(Challenge.readFile(fileInput));
     }
 }

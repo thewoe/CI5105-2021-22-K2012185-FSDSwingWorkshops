@@ -11,16 +11,29 @@ import javax.swing.*;
  * @author tugso
  */
 public class DataViewer extends JFrame {
-    JTextArea fileDisplay = new JTextArea();
+    // Attribute Declarations
+    private JTextArea fileDisplay = new JTextArea();
+    
+    // Attribute Getter and Setter Methods
+    public JTextArea getFileDisplay() {
+        return fileDisplay;
+    }
+
+    public void setFileDisplay(JTextArea fileDisplay) {
+        this.fileDisplay = fileDisplay;
+    }
+    
+    // Constructor Methods
     public DataViewer() throws UnsupportedOperationException {
         this.setTitle("Data Viewer");
         this.setBounds(400,0,400,400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        //JTextArea fileDisplay = new JTextArea();
         add(fileDisplay);
     }
+    
+    // Class Methods
     public void addText (String text) {
-        fileDisplay.append(text);
+        this.getFileDisplay().append(text);
     }
 }
