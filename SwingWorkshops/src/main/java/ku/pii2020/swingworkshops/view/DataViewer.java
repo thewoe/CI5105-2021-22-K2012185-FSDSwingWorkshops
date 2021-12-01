@@ -5,6 +5,7 @@
  */
 package ku.pii2020.swingworkshops.view;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
 /**
  *
@@ -13,6 +14,7 @@ import javax.swing.*;
 public class DataViewer extends JFrame {
     // Attribute Declarations
     private JTextArea fileDisplay = new JTextArea();
+    private JScrollPane scrollPane = new JScrollPane(this.getFileDisplay());
     
     // Attribute Getter and Setter Methods
     public JTextArea getFileDisplay() {
@@ -23,13 +25,22 @@ public class DataViewer extends JFrame {
         this.fileDisplay = fileDisplay;
     }
     
+    public JScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public void setScrollPane(JScrollPane scrollPane) {
+        this.scrollPane = scrollPane;
+    }
+    
     // Constructor Methods
     public DataViewer() throws UnsupportedOperationException {
-        this.setTitle("Data Viewer");
+        this.setTitle("My Task List");
         this.setBounds(400,0,400,400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        add(fileDisplay);
+        this.setLayout(new BorderLayout());
+        add(this.getScrollPane(), BorderLayout.CENTER);
     }
     
     // Class Methods
