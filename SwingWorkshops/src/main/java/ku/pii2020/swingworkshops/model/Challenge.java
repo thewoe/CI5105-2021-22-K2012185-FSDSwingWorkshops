@@ -28,11 +28,12 @@ public class Challenge {
     
     // Class Methods
     public static String readFile(String fileInput) {	  		 	  	 	        	     	
-        String textOutput="";
+        String textOutput="  Task List:" + System.lineSeparator();
         try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {	  		 	  	 	        	     		  		 	  	 	        	     	
             while (bReader.ready()) {	  		 	  	 	        	     	
                 String line = bReader.readLine();
-                textOutput = textOutput + line + System.lineSeparator();
+                String taskList[] = line.trim().split(",");
+                textOutput = textOutput + '\u2022' + " " + taskList[0] + ". Priority: " + taskList[1] + ". Due Date: " + taskList[2] + "." + System.lineSeparator();
             }	  		 	  	 	        	     	
         }	  		 	  	 	        	     	
         catch (Exception e) {	  		 	  	 	        	     	
