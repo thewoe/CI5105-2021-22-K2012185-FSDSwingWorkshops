@@ -6,6 +6,7 @@
 package ku.pii2020.swingworkshops.view;
 
 import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 import javax.swing.*;
 /**
  *
@@ -34,7 +35,7 @@ public class DataViewer extends JFrame {
     }
     
     // Constructor Methods
-    public DataViewer() throws UnsupportedOperationException {
+    public DataViewer() throws HeadlessException {
         this.setTitle("My Task List");
         this.setBounds(400,0,400,400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
