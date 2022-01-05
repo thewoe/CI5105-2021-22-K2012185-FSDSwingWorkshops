@@ -46,7 +46,6 @@ public class DataViewer extends JFrame {
     
     // Class Methods
     public void addText (String text) {
-        this.getFileDisplay().append(" My Task List:" + System.lineSeparator() + " ");
-        this.getFileDisplay().append(text);
+        this.getFileDisplay().append(" My Task List:" + System.lineSeparator() + " " + text);
     }
 }

@@ -44,8 +44,7 @@ public class Challenge {
             while (bReader.ready()) {	  		 	  	 	        	     	
                 String line = bReader.readLine();
                 String taskList[] = line.trim().split(",");
-                Task addedTask = new Task(taskList[0], Integer.parseInt(taskList[1]),taskList[2]);
-                tasks.add(addedTask);
+                tasks.add(new Task(taskList[0], Integer.parseInt(taskList[1]),taskList[2]));
             }
             setTasks(tasks);
         }	  		 	  	 	        	     	
@@ -57,9 +56,8 @@ public class Challenge {
     
     public static void displayTasks(String fileInput) {
         Challenge.readFile(fileInput);
-        String taskListString = Challenge.getTasks().toString();
-        String taskListStringEdited = taskListString.replaceAll(",","");
-        taskListStringEdited = taskListStringEdited.substring(1, taskListStringEdited.length() -1);
-        Challenge.getDataViewer().addText(taskListStringEdited);
+        String taskListString = Challenge.getTasks().toString().replaceAll(",","");
+        String tasksToDisplay = taskListString.substring(1, taskListString.length() -1);
+        Challenge.getDataViewer().addText(tasksToDisplay);
     }
 }
