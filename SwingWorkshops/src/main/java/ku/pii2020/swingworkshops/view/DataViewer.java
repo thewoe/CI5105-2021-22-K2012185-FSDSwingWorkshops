@@ -8,6 +8,7 @@ package ku.pii2020.swingworkshops.view;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
+import javax.swing.JButton;
 /**
  *
  * @author tugso
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
 public class DataViewer extends JFrame {
     // Attribute Declarations
     private static TextAreaPanel textPanel = new TextAreaPanel();
+    private static JButton loadFile = new JButton("Load File");
     
     // Attribute Getter and Setter Methods    
     public static TextAreaPanel getTextPanel() {
@@ -25,6 +27,14 @@ public class DataViewer extends JFrame {
         DataViewer.textPanel = textPanel;
     }
     
+    public static JButton getLoadFile() {
+        return DataViewer.loadFile;
+    }
+    
+    public static void setLoadFile(JButton loadFile) {
+        DataViewer.loadFile = loadFile;
+    }
+    
     // Constructor Methods
     public DataViewer() throws HeadlessException {
         this.setTitle("My Task List");
@@ -33,5 +43,6 @@ public class DataViewer extends JFrame {
         this.setVisible(true);
         this.setLayout(new BorderLayout());
         this.add(DataViewer.getTextPanel(), BorderLayout.CENTER);
+        this.add(DataViewer.getLoadFile(), BorderLayout.SOUTH);
     }
 }
