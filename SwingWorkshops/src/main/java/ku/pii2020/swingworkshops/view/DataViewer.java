@@ -7,31 +7,22 @@ package ku.pii2020.swingworkshops.view;
 
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
-import javax.swing.*;
+import javax.swing.JFrame;
 /**
  *
  * @author tugso
  */
 public class DataViewer extends JFrame {
     // Attribute Declarations
-    private JTextArea fileDisplay = new JTextArea();
-    private JScrollPane scrollPane = new JScrollPane(this.getFileDisplay());
+    private static TextAreaPanel textPanel = new TextAreaPanel();
     
-    // Attribute Getter and Setter Methods
-    public JTextArea getFileDisplay() {
-        return fileDisplay;
-    }
-
-    public void setFileDisplay(JTextArea fileDisplay) {
-        this.fileDisplay = fileDisplay;
+    // Attribute Getter and Setter Methods    
+    public static TextAreaPanel getTextPanel() {
+        return DataViewer.textPanel;
     }
     
-    public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    public void setScrollPane(JScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
+    public static void setTextPanel(TextAreaPanel textPanel) {
+        DataViewer.textPanel = textPanel;
     }
     
     // Constructor Methods
@@ -41,11 +32,6 @@ public class DataViewer extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new BorderLayout());
-        add(this.getScrollPane(), BorderLayout.CENTER);
-    }
-    
-    // Class Methods
-    public void addText (String text) {
-        this.getFileDisplay().append(" My Task List:" + System.lineSeparator() + " " + text);
+        this.add(DataViewer.getTextPanel(), BorderLayout.CENTER);
     }
 }

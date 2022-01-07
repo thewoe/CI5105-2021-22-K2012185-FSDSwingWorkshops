@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.FileReader;	  		 	  	 	        	     	
 import java.io.BufferedReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import ku.pii2020.swingworkshops.view.DataViewer;
 
 /**
@@ -16,13 +19,13 @@ import ku.pii2020.swingworkshops.view.DataViewer;
  * @author dave
  */
 public class Challenge {
-    // Attribute declarations
+    // Attribute Declarations
     private static DataViewer dataViewer = new DataViewer();
     private static List<Task> tasks = new ArrayList();
     
     // Attribute Getter and Setter Methods
     public static DataViewer getDataViewer() {
-        return dataViewer;
+        return Challenge.dataViewer;
     }
 
     public static void setDataViewer(DataViewer dataViewer) {
@@ -30,7 +33,7 @@ public class Challenge {
     }
     
     public static List<Task> getTasks() {
-        return tasks;
+        return Challenge.tasks;
     }
     
     public static void setTasks(List<Task> tasks) {
@@ -38,8 +41,7 @@ public class Challenge {
     }
     
     // Class Methods
-    public static String readFile(String fileInput) {	  		 	  	 	        	     	
-        String textOutput="  Task List:" + System.lineSeparator();
+    public static void readFile(String fileInput) {	  		 	  	 	        	     	
         try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {	  		 	  	 	        	     		  		 	  	 	        	     	
             while (bReader.ready()) {	  		 	  	 	        	     	
                 String line = bReader.readLine();
@@ -48,16 +50,21 @@ public class Challenge {
             }
             setTasks(tasks);
         }	  		 	  	 	        	     	
-        catch (Exception e) {	  		 	  	 	        	     	
-            return "Error - Task Aborted";	 	  	 	        	     	
+        catch (Exception e) {
+            tasks.add(new Task("Error - Quote Error Code: ",1, createDateString()));	 	  	 	        	     	
         }	  		 	  	 	        	     		  
-        return textOutput;
   }
     
     public static void displayTasks(String fileInput) {
         Challenge.readFile(fileInput);
         String taskListString = Challenge.getTasks().toString().replaceAll(",","");
         String tasksToDisplay = taskListString.substring(1, taskListString.length() -1);
-        Challenge.getDataViewer().addText(tasksToDisplay);
+        Challenge.getDataViewer().getTextPanel().addText(tasksToDisplay);
+    }
+    
+    public static String createDateString() {
+        LocalDate currentDate = LocalDate.now();
+        DateFormat dateFormatting = new SimpleDateFormat("yyyy-mm-dd");
+        return dateFormatting.format(currentDate);
     }
 }

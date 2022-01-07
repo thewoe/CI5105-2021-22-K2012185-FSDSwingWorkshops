@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
  * @author dave
  */
 public class Task {
-       private String title;	  		 	  	 	        	     	
+    private String title;	  		 	  	 	        	     	
     private int priority;	  		 	  	 	        	     	
     private LocalDate targetDate;	  		 	  	 	        	     	
 	  		 	  	 	        	     	
