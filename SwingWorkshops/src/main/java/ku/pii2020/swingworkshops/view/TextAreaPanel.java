@@ -38,7 +38,7 @@ public class TextAreaPanel extends JPanel {
     
     // Constructor Methods    
     public TextAreaPanel() {
-        this.add(scrollPane);
+        this.add(TextAreaPanel.getScrollPane());
     }
     
     // Class Methods    

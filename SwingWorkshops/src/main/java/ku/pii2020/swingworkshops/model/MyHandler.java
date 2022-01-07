@@ -14,7 +14,13 @@ import java.awt.event.ActionListener;
  */
 public class MyHandler implements ActionListener {
     //Class Methods
+    @Override
     public void actionPerformed(ActionEvent ae) {
-        Challenge.displayTasks("Tasks.csv");
+        if (ae.getActionCommand().equals("Load File")) {
+            Challenge.displayTasks("Tasks.csv");
+        }
+        else if (ae.getActionCommand().equals("Quit")) {
+            System.exit(0);
+        }
     }
 }

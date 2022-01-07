@@ -8,8 +8,7 @@ package ku.pii2020.swingworkshops.view;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import ku.pii2020.swingworkshops.model.MyHandler;
+
 /**
  *
  * @author tugso
@@ -17,7 +16,7 @@ import ku.pii2020.swingworkshops.model.MyHandler;
 public class DataViewer extends JFrame {
     // Attribute Declarations
     private static TextAreaPanel textPanel = new TextAreaPanel();
-    private static JButton loadFile = new JButton("Load File");
+    private static ButtonAreaPanel buttonPanel = new ButtonAreaPanel();
     
     // Attribute Getter and Setter Methods    
     public static TextAreaPanel getTextPanel() {
@@ -28,12 +27,12 @@ public class DataViewer extends JFrame {
         DataViewer.textPanel = textPanel;
     }
     
-    public static JButton getLoadFile() {
-        return DataViewer.loadFile;
+    public static ButtonAreaPanel getButtonPanel() {
+        return DataViewer.buttonPanel;
     }
     
-    public static void setLoadFile(JButton loadFile) {
-        DataViewer.loadFile = loadFile;
+    public static void setButtonPanel(ButtonAreaPanel buttonPanel) {
+        DataViewer.buttonPanel = buttonPanel;
     }
     
     // Constructor Methods
@@ -44,7 +43,6 @@ public class DataViewer extends JFrame {
         this.setVisible(true);
         this.setLayout(new BorderLayout());
         this.add(DataViewer.getTextPanel(), BorderLayout.CENTER);
-        this.add(DataViewer.getLoadFile(), BorderLayout.SOUTH);
-        DataViewer.loadFile.addActionListener(new MyHandler());
+        this.add(DataViewer.getButtonPanel(), BorderLayout.SOUTH);
     }
 }
