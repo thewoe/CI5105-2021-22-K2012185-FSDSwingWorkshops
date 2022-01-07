@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import ku.pii2020.swingworkshops.model.MyHandler;
 /**
  *
  * @author tugso
@@ -44,5 +45,6 @@ public class DataViewer extends JFrame {
         this.setLayout(new BorderLayout());
         this.add(DataViewer.getTextPanel(), BorderLayout.CENTER);
         this.add(DataViewer.getLoadFile(), BorderLayout.SOUTH);
+        DataViewer.loadFile.addActionListener(new MyHandler());
     }
 }
