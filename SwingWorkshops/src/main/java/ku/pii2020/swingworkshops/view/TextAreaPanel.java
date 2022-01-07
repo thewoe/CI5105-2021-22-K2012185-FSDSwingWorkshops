@@ -8,6 +8,7 @@ package ku.pii2020.swingworkshops.view;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import ku.pii2020.swingworkshops.model.Challenge;
 
 /**
  *
@@ -42,6 +43,7 @@ public class TextAreaPanel extends JPanel {
     
     // Class Methods    
     public static void addText(String text) {
-        TextAreaPanel.getTextDisplay().append(" My Task List:" + System.lineSeparator() + " " + text);
+        Challenge.getTasks().clear();
+        TextAreaPanel.getTextDisplay().setText(" My Task List:" + System.lineSeparator() + " " + text);
     }
 }

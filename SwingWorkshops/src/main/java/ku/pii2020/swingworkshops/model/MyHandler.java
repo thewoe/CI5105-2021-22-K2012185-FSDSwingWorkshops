@@ -15,6 +15,6 @@ import java.awt.event.ActionListener;
 public class MyHandler implements ActionListener {
     //Class Methods
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("Load File Button Clicked");
+        Challenge.displayTasks("Tasks.csv");
     }
 }
