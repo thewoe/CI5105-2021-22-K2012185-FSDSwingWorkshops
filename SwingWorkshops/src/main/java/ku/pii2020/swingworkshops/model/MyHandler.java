@@ -22,16 +22,22 @@ public class MyHandler implements ActionListener {
                 Challenge.getTasks().clear();
                 Challenge.displayTasks("Tasks.csv");
                 break;
-            case "Selected Text":
+            case "Delete Task":
                 if (TextAreaPanel.getTextDisplay().getSelectedText() != null) {
                     String selectedText = TextAreaPanel.getTextDisplay().getSelectedText();
                     int i = -1;
-                    for (Task task : Challenge.getTasks()) {
-                        i++;
-                        if (task.getTitle().equals(selectedText)) {
-                            System.out.println(i);
+                    boolean found = false;
+                        for (Task task : Challenge.getTasks()) {
+                            i++;
+                            if (task.getTitle().equals(selectedText)) {
+                                System.out.println(i);
+                                found = true;
+                                break;
+                            }
                         }
-                    }
+                        if (found == false) {
+                            System.out.println("No Task Found");
+                        }
                 }
                 else {
                     System.out.println("No Task Found");

@@ -17,7 +17,7 @@ import ku.pii2020.swingworkshops.model.MyHandler;
 public class ButtonAreaPanel extends JPanel {
     //Attribute Declarations
     private static JButton loadFile = new JButton("Load File");
-    private static JButton userSelectedText = new JButton("Selected Text");
+    private static JButton userSelectedText = new JButton("Delete Task");
     private static JButton quitViewer = new JButton("Quit");
     
     // Attribute Getter and Setter Methods    
