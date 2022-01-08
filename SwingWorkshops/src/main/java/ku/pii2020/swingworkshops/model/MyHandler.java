@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import ku.pii2020.swingworkshops.view.DataViewer;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
 /**
@@ -54,9 +53,22 @@ public class MyHandler implements ActionListener {
                         for (Task task : Challenge.getTasks()) {
                             i++;
                             if (task.getTitle().equals(selectedText)) {
-                                Challenge.getTasks().remove(i);
-                                System.out.println("Task Deleted: " + i);
-                                System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
+                                int optionPane = JOptionPane.showConfirmDialog(Challenge.getDataViewer(), "Are you sure you want to delete the selected task?", "Confirm Task Deletion", JOptionPane.YES_NO_CANCEL_OPTION);
+                                switch (optionPane) {
+                                    case JOptionPane.YES_OPTION:
+                                        Challenge.getTasks().remove(i);
+                                        System.out.println("Task Deleted: " + i);
+                                        System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
+                                        break;
+                                    case JOptionPane.NO_OPTION:
+                                        System.out.println("User No Option ");
+                                        break;
+                                    case JOptionPane.CANCEL_OPTION:
+                                        System.out.println("User Cancel Option");
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 found = true;
                                 break;
                             }
