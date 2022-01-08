@@ -9,10 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.FileReader;	  		 	  	 	        	     	
 import java.io.BufferedReader;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import ku.pii2020.swingworkshops.view.DataViewer;
+import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
 /**
  *
@@ -51,7 +49,7 @@ public class Challenge {
             setTasks(tasks);
         }	  		 	  	 	        	     	
         catch (Exception e) {
-            tasks.add(new Task("Error - Quote Error Code: ",1, createDateString()));	 	  	 	        	     	
+            TextAreaPanel.getTextDisplay().setText("Error - File Not Found/Unreadable. Please Retry.");	 	  	 	        	     	
         }	  		 	  	 	        	     		  
   }
     
@@ -60,11 +58,5 @@ public class Challenge {
         String taskListString = Challenge.getTasks().toString().replaceAll(",","");
         String tasksToDisplay = taskListString.substring(1, taskListString.length() -1);
         Challenge.getDataViewer().getTextPanel().addText(tasksToDisplay);
-    }
-    
-    public static String createDateString() {
-        LocalDate currentDate = LocalDate.now();
-        DateFormat dateFormatting = new SimpleDateFormat("yyyy-mm-dd");
-        return dateFormatting.format(currentDate);
     }
 }

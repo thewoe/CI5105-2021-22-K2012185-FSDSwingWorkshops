@@ -7,6 +7,9 @@ package ku.pii2020.swingworkshops.model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import ku.pii2020.swingworkshops.view.DataViewer;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
 /**
@@ -20,7 +23,18 @@ public class MyHandler implements ActionListener {
         switch (ae.getActionCommand()) {
             case "Load File":
                 Challenge.getTasks().clear();
-                Challenge.displayTasks("Tasks.csv");
+                JFileChooser fileChooser = new JFileChooser();
+                FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("CSV Files", "csv");
+                fileChooser.setFileFilter(fileFilter);
+                int returnValue = fileChooser.showOpenDialog(Challenge.getDataViewer());
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        Challenge.displayTasks(fileChooser.getSelectedFile().getName());
+                    }
+                    catch (Exception e) {
+                        TextAreaPanel.getTextDisplay().setText("Error - File Not Found/Unreadable. Please Retry.");
+                    }
+                }
                 break;
             case "Delete Task":
                 if (TextAreaPanel.getTextDisplay().getSelectedText() != null) {
