@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 public class DataViewer extends JFrame {
     // Attribute Declarations
     private static TextAreaPanel textPanel = new TextAreaPanel();
-    private static ButtonAreaPanel buttonPanel = new ButtonAreaPanel();
+    private static ButtonPanel buttonPanel = new ButtonPanel();
     
     // Attribute Getter and Setter Methods    
     public static TextAreaPanel getTextPanel() {
@@ -27,11 +27,11 @@ public class DataViewer extends JFrame {
         DataViewer.textPanel = textPanel;
     }
     
-    public static ButtonAreaPanel getButtonPanel() {
+    public static ButtonPanel getButtonPanel() {
         return DataViewer.buttonPanel;
     }
     
-    public static void setButtonPanel(ButtonAreaPanel buttonPanel) {
+    public static void setButtonPanel(ButtonPanel buttonPanel) {
         DataViewer.buttonPanel = buttonPanel;
     }
     

@@ -14,7 +14,7 @@ import ku.pii2020.swingworkshops.model.MyHandler;
  *
  * @author tugso
  */
-public class ButtonAreaPanel extends JPanel {
+public class ButtonPanel extends JPanel {
     //Attribute Declarations
     private static JButton loadFile = new JButton("Load File");
     private static JButton userSelectedText = new JButton("Delete Task");
@@ -22,36 +22,36 @@ public class ButtonAreaPanel extends JPanel {
     
     // Attribute Getter and Setter Methods    
     public static JButton getLoadFile() {
-        return ButtonAreaPanel.loadFile;
+        return ButtonPanel.loadFile;
     }
     
     public static void setLoadFile(JButton loadFile) {
-        ButtonAreaPanel.loadFile = loadFile;
+        ButtonPanel.loadFile = loadFile;
     }
     
     public static JButton getQuitViewer() {
-        return ButtonAreaPanel.quitViewer;
+        return ButtonPanel.quitViewer;
     }
     
     public static void setQuitViewer(JButton quitViewer) {
-        ButtonAreaPanel.quitViewer = quitViewer;
+        ButtonPanel.quitViewer = quitViewer;
     }
     
     public static JButton getUserSelectedText() {
-        return ButtonAreaPanel.userSelectedText;
+        return ButtonPanel.userSelectedText;
     }
     
     public static void setUserSelectedText(JButton userSelectedText) {
-        ButtonAreaPanel.userSelectedText = userSelectedText;
+        ButtonPanel.userSelectedText = userSelectedText;
     }
     
     // Constructor Methods
-    public ButtonAreaPanel() {
-        this.add(ButtonAreaPanel.getLoadFile(), BorderLayout.WEST);
-        ButtonAreaPanel.loadFile.addActionListener(new MyHandler());
-        this.add(ButtonAreaPanel.getUserSelectedText(), BorderLayout.CENTER);
-        ButtonAreaPanel.userSelectedText.addActionListener(new MyHandler());
-        this.add(ButtonAreaPanel.getQuitViewer(), BorderLayout.EAST);
-        ButtonAreaPanel.quitViewer.addActionListener(new MyHandler());
+    public ButtonPanel() {
+        this.add(ButtonPanel.getLoadFile(), BorderLayout.WEST);
+        ButtonPanel.loadFile.addActionListener(new MyHandler());
+        this.add(ButtonPanel.getUserSelectedText(), BorderLayout.CENTER);
+        ButtonPanel.userSelectedText.addActionListener(new MyHandler());
+        this.add(ButtonPanel.getQuitViewer(), BorderLayout.EAST);
+        ButtonPanel.quitViewer.addActionListener(new MyHandler());
     }
 }
