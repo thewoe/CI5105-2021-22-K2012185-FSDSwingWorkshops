@@ -7,7 +7,6 @@ package ku.pii2020.swingworkshops.model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import ku.pii2020.swingworkshops.view.ButtonAreaPanel;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
 /**
@@ -20,14 +19,22 @@ public class MyHandler implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (ae.getActionCommand()) {
             case "Load File":
+                Challenge.getTasks().clear();
                 Challenge.displayTasks("Tasks.csv");
                 break;
             case "Selected Text":
                 if (TextAreaPanel.getTextDisplay().getSelectedText() != null) {
-                    System.out.println(TextAreaPanel.getTextDisplay().getSelectedText());
+                    String selectedText = TextAreaPanel.getTextDisplay().getSelectedText();
+                    int i = -1;
+                    for (Task task : Challenge.getTasks()) {
+                        i++;
+                        if (task.getTitle().equals(selectedText)) {
+                            System.out.println(i);
+                        }
+                    }
                 }
                 else {
-                    System.out.println("Please Select Some Text");
+                    System.out.println("No Task Found");
                 }
                 break;
             case "Quit":
