@@ -30,17 +30,21 @@ public class MyHandler implements ActionListener {
                         for (Task task : Challenge.getTasks()) {
                             i++;
                             if (task.getTitle().equals(selectedText)) {
-                                System.out.println(i);
+                                Challenge.getTasks().remove(i);
+                                System.out.println("Task Deleted: " + i);
+                                System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
                                 found = true;
                                 break;
                             }
                         }
                         if (found == false) {
-                            System.out.println("No Task Found");
+                            System.out.println("No Task Deleted");
+                            System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
                         }
                 }
                 else {
-                    System.out.println("No Task Found");
+                    System.out.println("No Task Deleted");
+                    System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
                 }
                 break;
             case "Quit":

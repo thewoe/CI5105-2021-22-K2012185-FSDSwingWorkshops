@@ -16,7 +16,6 @@ public class Main {
      */
     //Main Method
     public static void main(String[] args) {
-        //Challenge.displayTasks("Tasks.csv");
         Challenge.getDataViewer();
     }
     
