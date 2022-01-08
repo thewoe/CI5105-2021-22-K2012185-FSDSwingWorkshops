@@ -8,6 +8,7 @@ package ku.pii2020.swingworkshops.model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ku.pii2020.swingworkshops.view.DataViewer;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
@@ -22,14 +23,23 @@ public class MyHandler implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (ae.getActionCommand()) {
             case "Load File":
-                Challenge.getTasks().clear();
                 JFileChooser fileChooser = new JFileChooser();
                 FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("CSV Files", "csv");
                 fileChooser.setFileFilter(fileFilter);
                 int returnValue = fileChooser.showOpenDialog(Challenge.getDataViewer());
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     try {
-                        Challenge.displayTasks(fileChooser.getSelectedFile().getName());
+                        Object[] options = {"Append", "Replace"};
+                        int optionPane = JOptionPane.showOptionDialog(Challenge.getDataViewer(), "Append New Tasks to Existing Tasks or Replace Existing Tasks?", "Append or Replace Tasks", JOptionPane.YES_OPTION, JOptionPane.NO_OPTION, null, options, options[0]);
+                        if (optionPane == JOptionPane.YES_OPTION) {
+                            System.out.println("Append Button Clicked");
+                            Challenge.displayTasks(fileChooser.getSelectedFile().getName());
+                        }
+                        else if (optionPane == JOptionPane.NO_OPTION) {
+                            Challenge.getTasks().clear();
+                            System.out.println("Replace Button Clicked");
+                            Challenge.displayTasks(fileChooser.getSelectedFile().getName());
+                        }
                     }
                     catch (Exception e) {
                         TextAreaPanel.getTextDisplay().setText("Error - File Not Found/Unreadable. Please Retry.");
