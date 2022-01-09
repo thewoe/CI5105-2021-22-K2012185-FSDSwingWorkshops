@@ -21,6 +21,7 @@ public class ButtonPanel extends JPanel {
     private static JButton editTask = new JButton("Edit Task");
     private static JButton userSelectedText = new JButton("Delete Task");
     private static JButton quitViewer = new JButton("Quit");
+    private static JButton openTable = new JButton("Open Table");
     
     // Attribute Getter and Setter Methods    
     public static JButton getLoadFile() {
@@ -63,6 +64,14 @@ public class ButtonPanel extends JPanel {
         ButtonPanel.addTask = addTask;
     }
     
+    public static JButton getOpenTable() {
+        return ButtonPanel.openTable;
+    }
+    
+    public static void setopenTable(JButton openTable) {
+        ButtonPanel.openTable = openTable;
+    }
+    
     // Constructor Methods
     public ButtonPanel() {
         this.add(ButtonPanel.getLoadFile(), BorderLayout.WEST);
@@ -73,6 +82,8 @@ public class ButtonPanel extends JPanel {
         ButtonPanel.editTask.addActionListener(new MyHandler());
         this.add(ButtonPanel.getUserSelectedText(), BorderLayout.CENTER);
         ButtonPanel.userSelectedText.addActionListener(new MyHandler());
+        this.add(ButtonPanel.getOpenTable(), BorderLayout.EAST);
+        ButtonPanel.openTable.addActionListener(new MyHandler());
         this.add(ButtonPanel.getQuitViewer(), BorderLayout.EAST);
         ButtonPanel.quitViewer.addActionListener(new MyHandler());
     }

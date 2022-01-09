@@ -24,11 +24,13 @@ public class DataViewer extends JFrame {
     private static JMenuBar menuBar = new JMenuBar();
     private static JMenu fileMenu = new JMenu("File");
     private static JMenu editMenu = new JMenu("Edit");
+    private static JMenu viewMenu = new JMenu("View");
     private static JMenuItem loadFile = new JMenuItem("Load File");
     private static JMenuItem quitViewer = new JMenuItem("Quit");
     private static JMenuItem deleteTask = new JMenuItem("Delete Task");
     private static JMenuItem addTask = new JMenuItem("Add Task");
     private static JMenuItem editTask = new JMenuItem("Edit Task");
+    private static JMenuItem openTable = new JMenuItem("View Table");
     
     // Attribute Getter and Setter Methods    
     public static TextAreaPanel getTextPanel() {
@@ -107,10 +109,26 @@ public class DataViewer extends JFrame {
         DataViewer.addTask = addTask;
     }
     
+    public static JMenu getViewMenu() {
+        return viewMenu;
+    }
+
+    public static void setViewMenu(JMenu viewMenu) {
+        DataViewer.viewMenu = viewMenu;
+    }
+
+    public static JMenuItem getOpenTable() {
+        return openTable;
+    }
+
+    public static void setOpenTable(JMenuItem openTable) {
+        DataViewer.openTable = openTable;
+    }
+    
     // Constructor Methods
     public DataViewer() throws HeadlessException {
         this.setTitle("My Task List");
-        this.setBounds(400,0,500,425);
+        this.setBounds(400,0,575,425);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new BorderLayout());
@@ -126,13 +144,17 @@ public class DataViewer extends JFrame {
         DataViewer.editTask.addActionListener(new MyHandler());
         DataViewer.addTask.setActionCommand("Add Task");
         DataViewer.addTask.addActionListener(new MyHandler());
+        DataViewer.openTable.setActionCommand("Open Table");
+        DataViewer.openTable.addActionListener(new MyHandler());
         DataViewer.fileMenu.add(loadFile);
         DataViewer.fileMenu.add(quitViewer);
         DataViewer.editMenu.add(addTask);
         DataViewer.editMenu.add(editTask);
         DataViewer.editMenu.add(deleteTask);
+        DataViewer.viewMenu.add(openTable);
         DataViewer.menuBar.add(fileMenu);
         DataViewer.menuBar.add(editMenu);
+        DataViewer.menuBar.add(viewMenu);
         this.add(menuBar, BorderLayout.NORTH);
     }
 }

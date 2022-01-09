@@ -5,12 +5,22 @@
  */
 package ku.pii2020.swingworkshops.model;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
 /**
@@ -197,6 +207,27 @@ public class MyHandler implements ActionListener {
                     System.out.println("No Task Deleted");
                     System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
                 }
+                break;
+            case "Open Table":
+                DefaultTableModel tableModel = new DefaultTableModel();
+                JTable taskTable = new JTable(tableModel);
+                tableModel.addColumn("Task");
+                tableModel.addColumn("Priority");
+                tableModel.addColumn("Date");
+                for (int i = 0; i< Challenge.getTasks().size(); i++) {
+                    String taskTitle = Challenge.getTasks().get(i).getTitle();
+                    String taskPriority = String.valueOf(Challenge.getTasks().get(i).getPriority());
+                    String formattedDate = Challenge.getTasks().get(i).getTargetDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    String taskDate = formattedDate;
+                    Object[] data = {taskTitle, taskPriority, taskDate};
+                    tableModel.insertRow(taskTable.getRowCount(),data);
+                }
+                System.out.println("After For Loop");
+                JScrollPane taskTableScrollPane = new JScrollPane(taskTable);
+                JDialog tableViewer = new JDialog(Challenge.getDataViewer(), "Table View");
+                tableViewer.setBounds(400,0,500,500);
+                tableViewer.add(taskTableScrollPane);
+                tableViewer.setVisible(true);
                 break;
             case "Quit":
                 System.exit(0);
