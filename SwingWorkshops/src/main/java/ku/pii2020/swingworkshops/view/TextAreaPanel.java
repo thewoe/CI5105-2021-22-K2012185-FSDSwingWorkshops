@@ -5,6 +5,8 @@
  */
 package ku.pii2020.swingworkshops.view;
 
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -17,6 +19,7 @@ public class TextAreaPanel extends JPanel {
     // Attribute Declarations
     private static JTextArea textDisplay = new JTextArea(20,41);
     private static JScrollPane scrollPane = new JScrollPane(textDisplay);
+    private static JLabel titleLabel = new JLabel("My Tasks:");
     
     // Attribute Getter and Setter Methods    
     public static JTextArea getTextDisplay() {
@@ -35,13 +38,22 @@ public class TextAreaPanel extends JPanel {
         TextAreaPanel.scrollPane = scrollPane;
     }
     
+    public static JLabel getTitleLabel() {
+        return titleLabel;
+    }
+
+    public static void setTitleLabel(JLabel titleLabel) {
+        TextAreaPanel.titleLabel = titleLabel;
+    }
+    
     // Constructor Methods    
     public TextAreaPanel() {
-        this.add(TextAreaPanel.getScrollPane());
+        this.add(TextAreaPanel.getTitleLabel(), BorderLayout.WEST);
+        this.add(TextAreaPanel.getScrollPane(), BorderLayout.CENTER);
     }
     
     // Class Methods    
     public static void addText(String text) {
-        TextAreaPanel.getTextDisplay().setText(" My Task List:" + System.lineSeparator() + text);
+        TextAreaPanel.getTextDisplay().setText(text);
     }
 }

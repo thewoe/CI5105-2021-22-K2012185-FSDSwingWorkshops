@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ku.pii2020.swingworkshops.view.TextAreaPanel;
 
@@ -43,6 +44,117 @@ public class MyHandler implements ActionListener {
                     catch (Exception e) {
                         TextAreaPanel.getTextDisplay().setText("Error - File Not Found/Unreadable. Please Retry.");
                     }
+                }
+                break;
+            case "Edit Task":
+                if (TextAreaPanel.getTextDisplay().getSelectedText() != null) {
+                    String selectedText = TextAreaPanel.getTextDisplay().getSelectedText().trim();
+                    int selectedNumber = -1;
+                    try {
+                        selectedNumber = Integer.parseInt(selectedText);
+                    }
+                    catch (NumberFormatException numExcept) {
+                        
+                    }
+                    int taskToEdit = selectedNumber - 1;
+                            if (taskToEdit >= 0) {
+                                Object[] addPaneOptions = {"Title", "Priority", "Date", "Cancel"};
+                                int addTaskOptionPane = JOptionPane.showOptionDialog(Challenge.getDataViewer(), "Choose task attribute to edit", "Edit Task", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, addPaneOptions, addPaneOptions[0]);
+                                switch (addTaskOptionPane) {
+                                    case 0:
+                                        String updatedTitle = JOptionPane.showInputDialog("New Task Title:");
+                                        if (!updatedTitle.equals("")) {
+                                            try {
+                                                Challenge.getTasks().get(taskToEdit).setTitle(updatedTitle);
+                                                System.out.println("Title Updated");
+                                                Challenge.updateTasks();
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println("Closed");
+                                            }
+                                        }
+                                        else {
+                                            System.out.println("No Change");
+                                        }
+                                        break;
+                                    case 1:
+                                        String updatedPriority = JOptionPane.showInputDialog("New Task Priority:");
+                                        if (!updatedPriority.equals("")) {
+                                            try {
+                                                Challenge.getTasks().get(taskToEdit).setPriority(Integer.parseInt(updatedPriority));
+                                                System.out.println("Priority Updated");
+                                                Challenge.updateTasks();
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println("Closed");
+                                            }
+                                        }
+                                        else {
+                                            System.out.println("No Change");
+                                        } 
+                                        break;
+                                    case 2:
+                                        String updatedDate = JOptionPane.showInputDialog("New Task Due Date:");
+                                            if (!updatedDate.equals("")) {
+                                                try {
+                                                    Challenge.getTasks().get(taskToEdit).setTargetDate(updatedDate);
+                                                    System.out.println("Date Updated");
+                                                    Challenge.updateTasks();
+                                                }
+                                                catch (Exception e) {
+                                                    
+                                            }
+                                        }
+                                        else {
+                                            System.out.println("No Change");
+                                        }
+                                        break;
+                                    case 3:
+                                        System.out.println("Cancel Option");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            }
+                            else if (taskToEdit < 0) {
+                                System.out.println("Task Not Edited");
+                        }
+                }
+                else {
+                    System.out.println("Task Not Edited");
+                }
+                break;
+            case "Add Task":
+                JTextField taskTitleInputField = new JTextField();
+                JTextField taskPriorityInputField = new JTextField();
+                JTextField taskDateInputField = new JTextField();
+                Object[] inputFields = {"Task Title:", taskTitleInputField, "Task Priority:", taskPriorityInputField, "Task Date:", taskDateInputField};
+                int addTaskOptionPane = JOptionPane.showConfirmDialog(Challenge.getDataViewer(), inputFields, "Add Task", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (addTaskOptionPane == JOptionPane.OK_OPTION) {
+                    String userTitleInput = taskTitleInputField.getText().trim();
+                    String userPriorityInput = taskPriorityInputField.getText().trim();
+                    int userPriorityInputInt;
+                    String userDateInput = taskDateInputField.getText().trim();
+                    if (userTitleInput.equals("")) {
+                        userTitleInput = "Unnamed Task";
+                    }
+                    if (!userPriorityInput.equals("")) {
+                        try {
+                            userPriorityInputInt = Integer.parseInt(userPriorityInput);
+                        }
+                        catch (Exception e) {
+                         userPriorityInputInt = 1;
+                        }
+                    }
+                    else {
+                        userPriorityInputInt = 1;
+                    }
+                    if (userDateInput.equals("")) {
+                        userDateInput = "1970-01-01";
+                    }
+                    Challenge.getTasks().add(new Task(userTitleInput, userPriorityInputInt, userDateInput));
+                    Challenge.updateTasks();
                 }
                 break;
             case "Delete Task":

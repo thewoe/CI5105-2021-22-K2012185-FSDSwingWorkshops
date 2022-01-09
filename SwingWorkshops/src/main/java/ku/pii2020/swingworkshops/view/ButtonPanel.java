@@ -17,6 +17,8 @@ import ku.pii2020.swingworkshops.model.MyHandler;
 public class ButtonPanel extends JPanel {
     //Attribute Declarations
     private static JButton loadFile = new JButton("Load File");
+    private static JButton addTask = new JButton("Add Task");
+    private static JButton editTask = new JButton("Edit Task");
     private static JButton userSelectedText = new JButton("Delete Task");
     private static JButton quitViewer = new JButton("Quit");
     
@@ -45,10 +47,30 @@ public class ButtonPanel extends JPanel {
         ButtonPanel.userSelectedText = userSelectedText;
     }
     
+    public static JButton getEditTask() {
+        return ButtonPanel.editTask;
+    }
+    
+    public static void setEditTask(JButton editTask) {
+        ButtonPanel.editTask = editTask;
+    }
+    
+    public static JButton getAddTask() {
+        return ButtonPanel.addTask;
+    }
+    
+    public static void setAddTask(JButton addTask) {
+        ButtonPanel.addTask = addTask;
+    }
+    
     // Constructor Methods
     public ButtonPanel() {
         this.add(ButtonPanel.getLoadFile(), BorderLayout.WEST);
         ButtonPanel.loadFile.addActionListener(new MyHandler());
+        this.add(ButtonPanel.getAddTask(), BorderLayout.CENTER);
+        ButtonPanel.addTask.addActionListener(new MyHandler());
+        this.add(ButtonPanel.getEditTask(), BorderLayout.CENTER);
+        ButtonPanel.editTask.addActionListener(new MyHandler());
         this.add(ButtonPanel.getUserSelectedText(), BorderLayout.CENTER);
         ButtonPanel.userSelectedText.addActionListener(new MyHandler());
         this.add(ButtonPanel.getQuitViewer(), BorderLayout.EAST);

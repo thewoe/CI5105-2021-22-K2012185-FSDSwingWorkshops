@@ -27,6 +27,8 @@ public class DataViewer extends JFrame {
     private static JMenuItem loadFile = new JMenuItem("Load File");
     private static JMenuItem quitViewer = new JMenuItem("Quit");
     private static JMenuItem deleteTask = new JMenuItem("Delete Task");
+    private static JMenuItem addTask = new JMenuItem("Add Task");
+    private static JMenuItem editTask = new JMenuItem("Edit Task");
     
     // Attribute Getter and Setter Methods    
     public static TextAreaPanel getTextPanel() {
@@ -89,10 +91,26 @@ public class DataViewer extends JFrame {
         DataViewer.deleteTask = deleteTask;
     }
     
+    public static JMenuItem getEditTask() {
+        return editTask;
+    }
+
+    public static void setEditTask(JMenuItem editTask) {
+        DataViewer.editTask = editTask;
+    }
+    
+    public static JMenuItem getAddTask() {
+        return addTask;
+    }
+
+    public static void setAddTask(JMenuItem addTask) {
+        DataViewer.addTask = addTask;
+    }
+    
     // Constructor Methods
     public DataViewer() throws HeadlessException {
         this.setTitle("My Task List");
-        this.setBounds(400,0,400,425);
+        this.setBounds(400,0,500,425);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new BorderLayout());
@@ -104,8 +122,14 @@ public class DataViewer extends JFrame {
         DataViewer.quitViewer.addActionListener(new MyHandler());
         DataViewer.deleteTask.setActionCommand("Delete Task");
         DataViewer.deleteTask.addActionListener(new MyHandler());
+        DataViewer.editTask.setActionCommand("Edit Task");
+        DataViewer.editTask.addActionListener(new MyHandler());
+        DataViewer.addTask.setActionCommand("Add Task");
+        DataViewer.addTask.addActionListener(new MyHandler());
         DataViewer.fileMenu.add(loadFile);
         DataViewer.fileMenu.add(quitViewer);
+        DataViewer.editMenu.add(addTask);
+        DataViewer.editMenu.add(editTask);
         DataViewer.editMenu.add(deleteTask);
         DataViewer.menuBar.add(fileMenu);
         DataViewer.menuBar.add(editMenu);
