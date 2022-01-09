@@ -42,6 +42,6 @@ public class TextAreaPanel extends JPanel {
     
     // Class Methods    
     public static void addText(String text) {
-        TextAreaPanel.getTextDisplay().setText(" My Task List:" + System.lineSeparator() + " " + text);
+        TextAreaPanel.getTextDisplay().setText(" My Task List:" + System.lineSeparator() + text);
     }
 }

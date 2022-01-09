@@ -34,14 +34,18 @@ public class Challenge {
         return Challenge.tasks;
     }
     
+    public static Task getTask(int taskNumber) {
+        return Challenge.tasks.get(taskNumber);
+    }
+    
     public static void setTasks(List<Task> tasks) {
         Challenge.tasks = tasks;
     }
     
     // Class Methods
     public static void readFile(String fileInput) {	  		 	  	 	        	     	
-        try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {	  		 	  	 	        	     		  		 	  	 	        	     	
-            while (bReader.ready()) {	  		 	  	 	        	     	
+        try(BufferedReader bReader = new BufferedReader(new FileReader(fileInput))) {
+            while (bReader.ready()) {
                 String line = bReader.readLine();
                 String taskList[] = line.trim().split(",");
                 tasks.add(new Task(taskList[0], Integer.parseInt(taskList[1]),taskList[2]));
@@ -55,8 +59,19 @@ public class Challenge {
     
     public static void displayTasks(String fileInput) {
         Challenge.readFile(fileInput);
-        String taskListString = Challenge.getTasks().toString().replaceAll(",","");
-        String tasksToDisplay = taskListString.substring(1, taskListString.length() -1);
+        String taskListString= "";
+        for (int i = 0; i < Challenge.getTasks().size(); i++) {
+            taskListString = taskListString + String.valueOf(i+1) + Challenge.getTask(i).toString().replaceAll(",","");
+        }
+        String tasksToDisplay = taskListString.substring(0, taskListString.length() -1);
+        Challenge.getDataViewer().getTextPanel().addText(tasksToDisplay);
+    }
+        public static void updateTasks() {
+            String taskListString= "";
+        for (int i = 0; i < Challenge.getTasks().size(); i++) {
+            taskListString = taskListString + String.valueOf(i+1) + Challenge.getTask(i).toString().replaceAll(",","");
+        }
+        String tasksToDisplay = taskListString.substring(0, taskListString.length() -1);
         Challenge.getDataViewer().getTextPanel().addText(tasksToDisplay);
     }
 }

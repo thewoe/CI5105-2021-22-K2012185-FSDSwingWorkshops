@@ -47,18 +47,23 @@ public class MyHandler implements ActionListener {
                 break;
             case "Delete Task":
                 if (TextAreaPanel.getTextDisplay().getSelectedText() != null) {
-                    String selectedText = TextAreaPanel.getTextDisplay().getSelectedText();
-                    int i = -1;
-                    boolean found = false;
-                        for (Task task : Challenge.getTasks()) {
-                            i++;
-                            if (task.getTitle().equals(selectedText)) {
+                    String selectedText = TextAreaPanel.getTextDisplay().getSelectedText().trim();
+                    int selectedNumber = -1;
+                    try {
+                        selectedNumber = Integer.parseInt(selectedText);
+                    }
+                    catch (NumberFormatException numExcept) {
+                        
+                    }
+                    int taskToDelete = selectedNumber - 1;
+                            if (taskToDelete >= 0) {
                                 int optionPane = JOptionPane.showConfirmDialog(Challenge.getDataViewer(), "Are you sure you want to delete the selected task?", "Confirm Task Deletion", JOptionPane.YES_NO_CANCEL_OPTION);
                                 switch (optionPane) {
                                     case JOptionPane.YES_OPTION:
-                                        Challenge.getTasks().remove(i);
-                                        System.out.println("Task Deleted: " + i);
+                                        Challenge.getTasks().remove(taskToDelete);
+                                        System.out.println("Task Deleted: " + taskToDelete);
                                         System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
+                                        Challenge.updateTasks();
                                         break;
                                     case JOptionPane.NO_OPTION:
                                         System.out.println("User No Option ");
@@ -69,13 +74,11 @@ public class MyHandler implements ActionListener {
                                     default:
                                         break;
                                 }
-                                found = true;
                                 break;
                             }
-                        }
-                        if (found == false) {
-                            System.out.println("No Task Deleted");
-                            System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
+                            else if (taskToDelete < 0) {
+                                System.out.println("No Task Deleted");
+                                System.out.println("Tasks Remaining: " + Challenge.getTasks().size());
                         }
                 }
                 else {

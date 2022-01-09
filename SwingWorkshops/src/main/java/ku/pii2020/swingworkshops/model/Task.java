@@ -13,6 +13,7 @@ import java.time.format.DateTimeParseException;
  * @author dave
  */
 public class Task {
+    
     private String title;	  		 	  	 	        	     	
     private int priority;	  		 	  	 	        	     	
     private LocalDate targetDate;	  		 	  	 	        	     	
@@ -25,7 +26,7 @@ public class Task {
 public Task(){	  		 	  	 	        	     	
 	  		 	  	 	        	     	
 }	  		 	  	 	        	     	
-  public Task(String title, int priority, String targetDate) {	  		 	  	 	        	     	
+  public Task(String title, int priority, String targetDate) {
     this.setTitle(title);	  		 	  	 	        	     	
     this.setPriority(priority);	  		 	  	 	        	     	
     this.setTargetDate(targetDate);	  		 	  	 	        	     	
@@ -92,7 +93,7 @@ public Task(){
      */	  		 	  	 	        	     	
     public void setTitle(String title) {	  		 	  	 	        	     	
         this.title = title;	  		 	  	 	        	     	
-    }	  		 	  	 	        	     	
+    }
 	  		 	  	 	        	     	
  /**	  		 	  	 	        	     	
      * Get a String representation of a Task	  		 	  	 	        	     	
@@ -101,6 +102,6 @@ public Task(){
      */	  		 	  	 	        	     	
     @Override	  		 	  	 	        	     	
     public String toString() {	  		 	  	 	        	     	
-        return '\u2022' + " " + title + ". Priority: "+ priority + ". Due Date: " + targetDate.toString() + ". " + System.lineSeparator();	  		 	  	 	        	     	
+        return "  " + title + ". Priority: "+ priority + ". Due Date: " + targetDate.toString() + ". " + System.lineSeparator();	  		 	  	 	        	     	
     }
 }
