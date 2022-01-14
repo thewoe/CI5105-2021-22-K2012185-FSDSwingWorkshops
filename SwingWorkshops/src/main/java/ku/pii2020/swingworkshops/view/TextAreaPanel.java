@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 public class TextAreaPanel extends JPanel {
     // Attribute Declarations
     private static JTextArea textDisplay = new JTextArea(20,41);
-    private static JScrollPane scrollPane = new JScrollPane(textDisplay);
+    private static JScrollPane scrollPane = new JScrollPane(TextAreaPanel.getTextDisplay());
     private static JLabel titleLabel = new JLabel("My Tasks:");
     
     // Attribute Getter and Setter Methods    

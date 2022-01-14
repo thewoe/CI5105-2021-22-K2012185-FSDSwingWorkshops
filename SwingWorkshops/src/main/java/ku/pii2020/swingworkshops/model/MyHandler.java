@@ -5,14 +5,9 @@
  */
 package ku.pii2020.swingworkshops.model;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Vector;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -128,11 +123,11 @@ public class MyHandler implements ActionListener {
                                 break;
                             }
                             else if (taskToEdit < 0) {
-                                System.out.println("Task Not Edited");
+                                System.out.println("No Task Found");
                         }
                 }
                 else {
-                    System.out.println("Task Not Edited");
+                    System.out.println("No Task Found");
                 }
                 break;
             case "Add Task":
