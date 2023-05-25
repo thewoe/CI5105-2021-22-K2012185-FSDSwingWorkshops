@@ -14,8 +14,9 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    //Main Method
     public static void main(String[] args) {
-        // TODO code application logic here
+        Challenge.getDataViewer();
     }
     
 }
